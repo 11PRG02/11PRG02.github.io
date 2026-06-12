@@ -24,8 +24,20 @@
     --serif:      'Playfair Display', serif;
     --sans:       'Inter', sans-serif;
   }
+  [data-theme="light"] {
+    --bg:         #F2F5FC;
+    --bg2:        #E6ECFA;
+    --bg3:        #FFFFFF;
+    --bg4:        #EBF1FE;
+    --text:       #0D1B3D;
+    --muted:      #5C6F94;
+    --border:     rgba(27,79,168,0.22);
+    --border-hi:  rgba(27,79,168,0.4);
+    --blue-pale:  #1B4FA8;
+    --blue-faint: #1B4FA8;
+  }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:var(--bg); color:var(--text); font-family:var(--sans); overflow-x:hidden; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); overflow-x:hidden; transition:background .3s, color .3s; }
   ::-webkit-scrollbar { width:5px; }
   ::-webkit-scrollbar-track { background:var(--bg); }
   ::-webkit-scrollbar-thumb { background:var(--blue-light); border-radius:3px; }
@@ -52,6 +64,14 @@
   }
   .nav-links a:hover { color:var(--blue-faint); background:rgba(27,79,168,0.25); }
   .hamburger { display:none; background:none; border:none; cursor:pointer; color:var(--blue-pale); font-size:1.4rem; }
+  .theme-toggle {
+    background:var(--bg3); border:1px solid var(--border); color:var(--blue-pale);
+    width:36px; height:36px; border-radius:8px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; font-size:1.05rem;
+    margin-left:0.75rem; transition:border-color .2s, transform .2s;
+  }
+  .theme-toggle:hover { border-color:var(--border-hi); transform:translateY(-1px); }
+  .nav-right { display:flex; align-items:center; }
 
   /* ── HERO ── */
   .hero {
@@ -149,16 +169,11 @@
   .about-banner .accent { color:var(--blue-pale); font-weight:600; }
 
   /* ── STUDENTS ── */
-  .filter-bar { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:2.5rem; }
-  .filter-btn { background:var(--bg3); border:1px solid var(--border); color:var(--muted); padding:0.4rem 1rem; border-radius:6px; font-size:0.78rem; font-weight:500; cursor:pointer; font-family:var(--sans); letter-spacing:0.04em; transition:all .2s; }
-  .filter-btn:hover { border-color:var(--border-hi); color:var(--blue-pale); }
-  .filter-btn.active { background:var(--blue); border-color:var(--blue-light); color:var(--blue-faint); }
   .students-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:1.1rem; }
   .student-card { background:var(--bg3); border:1px solid var(--border); border-radius:14px; padding:1.5rem 1.25rem; text-align:center; cursor:pointer; transition:transform .2s, border-color .2s, box-shadow .2s; }
   .student-card:hover { transform:translateY(-5px); border-color:var(--border-hi); box-shadow:0 10px 30px rgba(0,0,0,0.4); }
   .s-avatar { width:60px; height:60px; border-radius:50%; background:linear-gradient(135deg, var(--blue-dark), var(--blue-mid)); border:2px solid var(--blue-light); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1rem; color:var(--blue-pale); margin:0 auto 1rem; }
   .s-name { font-size:0.9rem; font-weight:600; color:var(--text); margin-bottom:0.2rem; }
-  .s-role { font-size:0.68rem; font-weight:700; color:var(--blue-light); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.7rem; }
   .s-tags { display:flex; gap:0.3rem; justify-content:center; flex-wrap:wrap; }
   .s-tag { background:rgba(27,79,168,0.3); border:1px solid rgba(74,128,212,0.35); color:var(--blue-pale); font-size:0.63rem; padding:0.15rem 0.45rem; border-radius:4px; }
 
@@ -170,8 +185,7 @@
   .modal-close { position:absolute; top:1rem; right:1rem; background:none; border:none; color:var(--muted); font-size:1.2rem; cursor:pointer; width:30px; height:30px; display:flex; align-items:center; justify-content:center; border-radius:6px; transition:color .2s,background .2s; }
   .modal-close:hover { color:var(--text); background:var(--bg4); }
   .m-avatar { width:76px; height:76px; border-radius:50%; background:linear-gradient(135deg, var(--blue-dark), var(--blue-mid)); border:3px solid var(--blue-light); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.4rem; color:var(--blue-pale); margin:0 auto 1.25rem; }
-  .modal h2 { font-family:var(--serif); font-size:1.3rem; text-align:center; margin-bottom:0.2rem; }
-  .m-role { font-size:0.72rem; font-weight:700; color:var(--blue-light); text-align:center; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1.5rem; }
+  .modal h2 { font-family:var(--serif); font-size:1.3rem; text-align:center; margin-bottom:1.5rem; }
   .m-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.25rem; }
   .m-item label { font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.2rem; }
   .m-item span { font-size:0.88rem; color:var(--text); }
@@ -255,13 +269,16 @@
     <img class="nav-logo-img" src="adamson-university-logo-png_seeklogo-406201.png" alt="Adamson University"/>
     <div class="nav-name">11<span>PRG02</span></div>
   </a>
-  <div class="nav-links" id="navLinks">
-    <a href="#about">About</a>
-    <a href="#students">Students</a>
-    <a href="#schedule">Schedule</a>
-    <a href="#gallery">Gallery</a>
+  <div class="nav-right">
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#students">Students</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#gallery">Gallery</a>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">🌙</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
 </nav>
 
 <header class="hero" id="top">
@@ -318,14 +335,7 @@
 <div class="section-wrap" id="students">
   <div class="section-eyebrow">02 · Students</div>
   <h2 class="section-title">Meet the Block</h2>
-  <p class="section-desc">Click any card to view a full profile. Filter by role below.</p>
-  <div class="filter-bar">
-    <button class="filter-btn active" data-role="all">All</button>
-    <button class="filter-btn" data-role="developer">Developer</button>
-    <button class="filter-btn" data-role="analyst">Analyst</button>
-    <button class="filter-btn" data-role="designer">UI / Designer</button>
-    <button class="filter-btn" data-role="officer">Class Officer</button>
-  </div>
+  <p class="section-desc">Click any card to view a full profile.</p>
   <div class="students-grid" id="studentsGrid"></div>
 </div>
 
@@ -334,7 +344,6 @@
     <button class="modal-close" id="modalClose">✕</button>
     <div class="m-avatar" id="mAvatar"></div>
     <h2 id="mName"></h2>
-    <div class="m-role" id="mRole"></div>
     <div class="m-grid">
       <div class="m-item"><label>Specialty</label><span id="mSpec"></span></div>
       <div class="m-item"><label>Fave Language</label><span id="mLang"></span></div>
@@ -350,7 +359,7 @@
 <div class="section-wrap" id="schedule">
   <div class="section-eyebrow">03 · Schedule</div>
   <h2 class="section-title">Class Schedule</h2>
-  <p class="section-desc">Weekly timetable for S.Y. 2024–2025 · Room CS411. Select a day.</p>
+  <p class="section-desc">Weekly timetable for S.Y. 2026–2027 · Room CS411. Select a day.</p>
   <div class="day-tabs" id="dayTabs"></div>
   <table class="sched-table">
     <thead><tr><th>Time</th><th>Subject</th><th>Type</th></tr></thead>
@@ -479,15 +488,12 @@ const gallery = [
   { emoji:"🎓", bg:"gal-3", caption:"Graduation practice run",    date:"Mar 2025"  },
 ];
 
-function renderStudents(filter) {
+function renderStudents() {
   const grid = document.getElementById('studentsGrid');
-  const list = filter === 'all' ? students : students.filter(s => s.role === filter);
-  grid.innerHTML = list.map(s => {
-    const i = students.indexOf(s);
+  grid.innerHTML = students.map((s, i) => {
     return `<div class="student-card" onclick="openModal(${i})">
       <div class="s-avatar">${s.initials}</div>
       <div class="s-name">${s.name}</div>
-      <div class="s-role">${s.role}</div>
       <div class="s-tags">
         <span class="s-tag">${s.specialty}</span>
         <span class="s-tag">${s.lang}</span>
@@ -495,20 +501,12 @@ function renderStudents(filter) {
     </div>`;
   }).join('');
 }
-renderStudents('all');
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderStudents(btn.dataset.role);
-  });
-});
+renderStudents();
 
 function openModal(i) {
   const s = students[i];
   document.getElementById('mAvatar').textContent = s.initials;
   document.getElementById('mName').textContent   = s.name;
-  document.getElementById('mRole').textContent   = s.role.toUpperCase() + ' · ' + s.specialty;
   document.getElementById('mSpec').textContent   = s.specialty;
   document.getElementById('mLang').textContent   = s.lang;
   document.getElementById('mDream').textContent  = s.dream;
@@ -543,7 +541,7 @@ function renderSchedule(day) {
     </tr>`;
   }).join('');
 }
-renderSchedule(days);
+renderSchedule(days[0]);
 
 document.getElementById('galleryGrid').innerHTML = gallery.map(g => `
   <div class="gal-item">
@@ -563,6 +561,27 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
   });
 });
+
+/* ── THEME TOGGLE ── */
+const themeToggle = document.getElementById('themeToggle');
+function applyTheme(theme) {
+  if (theme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    themeToggle.textContent = '☀️';
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    themeToggle.textContent = '🌙';
+  }
+}
+const savedTheme = localStorage.getItem('theme') || 'dark';
+applyTheme(savedTheme);
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  const next = current === 'light' ? 'dark' : 'light';
+  applyTheme(next);
+  localStorage.setItem('theme', next);
+});
+
 </script>
 </body>
 </html>
