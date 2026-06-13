@@ -23,6 +23,9 @@
     --border-hi:  rgba(74,128,212,0.6);
     --nav-bg:     rgba(6,14,34,0.95);
     --on-accent:  #EDF2FF;
+    --on-accent-muted: rgba(237,242,255,0.55);
+    --subj-core-color:  #b3ccff;
+    --subj-other-color: #a0b4d4;
     --serif:      'Playfair Display', serif;
     --sans:       'Inter', sans-serif;
   }
@@ -38,6 +41,8 @@
     --blue-pale:  #1B4FA8;
     --blue-faint: #1B4FA8;
     --nav-bg:     rgba(242,245,252,0.92);
+    --subj-core-color:  #1B4FA8;
+    --subj-other-color: #5C6F94;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { background:var(--bg); color:var(--text); font-family:var(--sans); overflow-x:hidden; transition:background .3s, color .3s; }
@@ -146,7 +151,7 @@
   .hero-stat { padding:1.2rem 2.25rem; text-align:center; border-right:1px solid var(--border); }
   .hero-stat:last-child { border-right:none; }
   .hero-stat .num { font-family:var(--serif); font-size:1.85rem; font-weight:800; color:var(--on-accent); display:block; line-height:1; }
-  .hero-stat .lbl { font-size:0.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; margin-top:0.3rem; display:block; }
+  .hero-stat .lbl { font-size:0.68rem; color:var(--on-accent-muted); text-transform:uppercase; letter-spacing:0.1em; margin-top:0.3rem; display:block; }
   .hero-scroll { position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:0.4rem; z-index:1; }
   .hero-scroll span { font-size:0.62rem; color:var(--muted); letter-spacing:0.15em; text-transform:uppercase; }
   .scroll-line { width:1px; height:36px; background:linear-gradient(to bottom, var(--blue-light), transparent); animation:drop 1.6s ease infinite; }
@@ -207,8 +212,8 @@
   .sched-table tbody tr:hover td { background:rgba(27,79,168,0.12); }
   .subj-pill { display:inline-block; padding:0.22rem 0.7rem; border-radius:5px; font-size:0.8rem; font-weight:500; }
   .subj-prog  { background:rgba(27,79,168,0.35); color:var(--blue-pale); border:1px solid rgba(74,128,212,0.45); }
-  .subj-core  { background:rgba(74,128,212,0.2); color:#b3ccff; border:1px solid rgba(74,128,212,0.35); }
-  .subj-other { background:rgba(122,144,184,0.15); color:#a0b4d4; border:1px solid rgba(122,144,184,0.25); }
+  .subj-core  { background:rgba(74,128,212,0.2); color:var(--subj-core-color); border:1px solid rgba(74,128,212,0.35); }
+  .subj-other { background:rgba(122,144,184,0.15); color:var(--subj-other-color); border:1px solid rgba(122,144,184,0.25); }
   .t-col { font-size:0.75rem; color:var(--muted); font-weight:600; letter-spacing:0.03em; }
   .sched-table tr.break-row td { background:rgba(255,255,255,0.015); color:rgba(122,144,184,0.5); font-size:0.78rem; font-style:italic; }
 
@@ -305,7 +310,7 @@
 
 <div class="section-wrap" id="about">
   <div class="section-eyebrow">01 · About</div>
-  <h2 class="section-title">About</h2>
+  <h2 class="section-title">About Our Block</h2>
   <div class="about-grid">
     <div class="about-card">
       <div class="about-icon">💻</div>
@@ -394,7 +399,7 @@
     <a href="#schedule">Schedule</a>
     <a href="#gallery">Gallery</a>
   </div>
-  <div class="footer-copy">© 2026–2027 11PRG02 · CS411 · Adamson University</div>
+  <div class="footer-copy">© 2026–2027 11PRG02 · CS411 · Adamson University </div>
 </footer>
 
 <script>
