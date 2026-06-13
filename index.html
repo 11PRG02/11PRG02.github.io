@@ -283,6 +283,7 @@
       <a href="#students">Students</a>
       <a href="#schedule">Schedule</a>
       <a href="#gallery">Gallery</a>
+      <a href="#developers">Developer</a>
     </div>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">🌙</button>
     <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
@@ -310,7 +311,7 @@
 
 <div class="section-wrap" id="about">
   <div class="section-eyebrow">01 · About</div>
-  <h2 class="section-title">About Our Block</h2>
+  <h2 class="section-title">About</h2>
   <div class="about-grid">
     <div class="about-card">
       <div class="about-icon">💻</div>
@@ -388,6 +389,15 @@
   </div>
 </div>
 
+<hr class="divider"/>
+
+<div class="section-wrap" id="developers">
+  <div class="section-eyebrow">05 · Developer</div>
+  <h2 class="section-title">Meet the Developer</h2>
+  <p class="section-desc">The mind behind this site. Click the card to view the full profile.</p>
+  <div class="students-grid" id="developersGrid"></div>
+</div>
+
 <footer>
   <img class="footer-logo" src="adamson-university-logo-png_seeklogo-406201.png" alt="Adamson University"/>
   <div class="footer-name">11PRG02</div>
@@ -398,8 +408,9 @@
     <a href="#students">Students</a>
     <a href="#schedule">Schedule</a>
     <a href="#gallery">Gallery</a>
+    <a href="#developers">Developer</a>
   </div>
-  <div class="footer-copy">© 2026–2027 11PRG02 · CS411 · Adamson University </div>
+  <div class="footer-copy">© 2026–2027 11PRG02 · CS411 · Adamson University</div>
 </footer>
 
 <script>
@@ -434,6 +445,10 @@ const students = [
   { name:"Bea Pascual",      initials:"BP", role:"officer",   specialty:"Comms & Dev",   lang:"JavaScript", dream:"Tech Journalist",    fun:"Block secretary",        bio:"Bea documents everything — minutes, code comments, blog posts. The block's voice and memory." },
   { name:"Chris Navarro",    initials:"CN", role:"developer", specialty:"Networking",    lang:"Python/Cisco",dream:"Network Engineer",  fun:"Mapped the school LAN",  bio:"Chris understands how data travels. Networking fundamentals are his foundation." },
   { name:"Dana Villanueva",  initials:"DV", role:"analyst",   specialty:"Data Cleaning", lang:"Python/SQL", dream:"Data Engineer",      fun:"Hates dirty data",       bio:"Dana knows clean data is the foundation of everything. ETL pipelines are her specialty." },
+];
+
+const developers = [
+  { name:"James Kiel Vergara Martinez", initials:"JM", role:"developer", specialty:"Web Development", lang:"HTML, JavaScript, Python, CSS, C++", dream:"IT Manager", fun:"Started Coding at 7 Years Old", bio:"James built and maintains this very site. A coder since age 7, he's comfortable across the full stack — from markup and styling to logic in Python and C++ — and dreams of one day managing IT teams and systems." },
 ];
 
 const scheduleData = {
@@ -496,23 +511,23 @@ const gallery = [
   { emoji:"🎓", bg:"gal-3", caption:"Graduation practice run",    date:"Coming soon"  },
 ];
 
-function renderStudents() {
-  const grid = document.getElementById('studentsGrid');
-  grid.innerHTML = students.map((s, i) => {
-    return `<div class="student-card" onclick="openModal(${i})">
+function renderCards(gridId, data, arrName) {
+  const grid = document.getElementById(gridId);
+  grid.innerHTML = data.map((s, i) => {
+    const tags = [s.specialty, ...s.lang.split(',').map(l => l.trim())]
+      .map(t => `<span class="s-tag">${t}</span>`).join('');
+    return `<div class="student-card" onclick="openModal(${arrName}, ${i})">
       <div class="s-avatar">${s.initials}</div>
       <div class="s-name">${s.name}</div>
-      <div class="s-tags">
-        <span class="s-tag">${s.specialty}</span>
-        <span class="s-tag">${s.lang}</span>
-      </div>
+      <div class="s-tags">${tags}</div>
     </div>`;
   }).join('');
 }
-renderStudents();
+renderCards('studentsGrid', students, 'students');
+renderCards('developersGrid', developers, 'developers');
 
-function openModal(i) {
-  const s = students[i];
+function openModal(arr, i) {
+  const s = arr[i];
   document.getElementById('mAvatar').textContent = s.initials;
   document.getElementById('mName').textContent   = s.name;
   document.getElementById('mSpec').textContent   = s.specialty;
