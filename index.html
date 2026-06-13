@@ -21,6 +21,8 @@
     --muted:      #7A90B8;
     --border:     rgba(27,79,168,0.45);
     --border-hi:  rgba(74,128,212,0.6);
+    --nav-bg:     rgba(6,14,34,0.95);
+    --on-accent:  #EDF2FF;
     --serif:      'Playfair Display', serif;
     --sans:       'Inter', sans-serif;
   }
@@ -35,6 +37,7 @@
     --border-hi:  rgba(27,79,168,0.4);
     --blue-pale:  #1B4FA8;
     --blue-faint: #1B4FA8;
+    --nav-bg:     rgba(242,245,252,0.92);
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { background:var(--bg); color:var(--text); font-family:var(--sans); overflow-x:hidden; transition:background .3s, color .3s; }
@@ -45,7 +48,7 @@
   /* ── NAV ── */
   nav {
     position:fixed; top:0; left:0; right:0; z-index:100;
-    background:rgba(6,14,34,0.95); backdrop-filter:blur(16px);
+    background:var(--nav-bg); backdrop-filter:blur(16px);
     border-bottom:1px solid var(--border);
     padding:0 2.5rem; height:64px;
     display:flex; align-items:center; justify-content:space-between;
@@ -142,7 +145,7 @@
   }
   .hero-stat { padding:1.2rem 2.25rem; text-align:center; border-right:1px solid var(--border); }
   .hero-stat:last-child { border-right:none; }
-  .hero-stat .num { font-family:var(--serif); font-size:1.85rem; font-weight:800; color:var(--blue-pale); display:block; line-height:1; }
+  .hero-stat .num { font-family:var(--serif); font-size:1.85rem; font-weight:800; color:var(--on-accent); display:block; line-height:1; }
   .hero-stat .lbl { font-size:0.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; margin-top:0.3rem; display:block; }
   .hero-scroll { position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:0.4rem; z-index:1; }
   .hero-scroll span { font-size:0.62rem; color:var(--muted); letter-spacing:0.15em; text-transform:uppercase; }
@@ -172,7 +175,7 @@
   .students-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:1.1rem; }
   .student-card { background:var(--bg3); border:1px solid var(--border); border-radius:14px; padding:1.5rem 1.25rem; text-align:center; cursor:pointer; transition:transform .2s, border-color .2s, box-shadow .2s; }
   .student-card:hover { transform:translateY(-5px); border-color:var(--border-hi); box-shadow:0 10px 30px rgba(0,0,0,0.4); }
-  .s-avatar { width:60px; height:60px; border-radius:50%; background:linear-gradient(135deg, var(--blue-dark), var(--blue-mid)); border:2px solid var(--blue-light); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1rem; color:var(--blue-pale); margin:0 auto 1rem; }
+  .s-avatar { width:60px; height:60px; border-radius:50%; background:linear-gradient(135deg, var(--blue-dark), var(--blue-mid)); border:2px solid var(--blue-light); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1rem; color:var(--on-accent); margin:0 auto 1rem; }
   .s-name { font-size:0.9rem; font-weight:600; color:var(--text); margin-bottom:0.2rem; }
   .s-tags { display:flex; gap:0.3rem; justify-content:center; flex-wrap:wrap; }
   .s-tag { background:rgba(27,79,168,0.3); border:1px solid rgba(74,128,212,0.35); color:var(--blue-pale); font-size:0.63rem; padding:0.15rem 0.45rem; border-radius:4px; }
@@ -184,7 +187,7 @@
   @keyframes pop { from{transform:scale(.94);opacity:0} to{transform:scale(1);opacity:1} }
   .modal-close { position:absolute; top:1rem; right:1rem; background:none; border:none; color:var(--muted); font-size:1.2rem; cursor:pointer; width:30px; height:30px; display:flex; align-items:center; justify-content:center; border-radius:6px; transition:color .2s,background .2s; }
   .modal-close:hover { color:var(--text); background:var(--bg4); }
-  .m-avatar { width:76px; height:76px; border-radius:50%; background:linear-gradient(135deg, var(--blue-dark), var(--blue-mid)); border:3px solid var(--blue-light); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.4rem; color:var(--blue-pale); margin:0 auto 1.25rem; }
+  .m-avatar { width:76px; height:76px; border-radius:50%; background:linear-gradient(135deg, var(--blue-dark), var(--blue-mid)); border:3px solid var(--blue-light); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.4rem; color:var(--on-accent); margin:0 auto 1.25rem; }
   .modal h2 { font-family:var(--serif); font-size:1.3rem; text-align:center; margin-bottom:1.5rem; }
   .m-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.25rem; }
   .m-item label { font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.2rem; }
@@ -195,10 +198,10 @@
   .day-tabs { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:2rem; }
   .day-tab { background:var(--bg3); border:1px solid var(--border); color:var(--muted); padding:0.45rem 1.2rem; border-radius:7px; font-size:0.82rem; font-weight:500; cursor:pointer; font-family:var(--sans); transition:all .2s; }
   .day-tab:hover { border-color:var(--border-hi); color:var(--text); }
-  .day-tab.active { background:var(--blue); border-color:var(--blue-light); color:var(--blue-faint); }
+  .day-tab.active { background:var(--blue); border-color:var(--blue-light); color:var(--on-accent); }
   .sched-table { width:100%; border-collapse:collapse; border-radius:14px; overflow:hidden; border:1px solid var(--border); }
   .sched-table thead tr { background:linear-gradient(90deg, var(--blue-dark), var(--blue)); }
-  .sched-table th { text-align:left; padding:1rem 1.5rem; font-size:0.72rem; color:var(--blue-pale); font-weight:700; letter-spacing:0.12em; text-transform:uppercase; }
+  .sched-table th { text-align:left; padding:1rem 1.5rem; font-size:0.72rem; color:var(--on-accent); font-weight:700; letter-spacing:0.12em; text-transform:uppercase; }
   .sched-table td { padding:0.9rem 1.5rem; font-size:0.87rem; border-bottom:1px solid rgba(27,79,168,0.15); vertical-align:middle; }
   .sched-table tr:last-child td { border-bottom:none; }
   .sched-table tbody tr:hover td { background:rgba(27,79,168,0.12); }
@@ -228,7 +231,7 @@
     display:inline-block;
     padding:0.75rem 1.5rem;
     background:var(--blue-mid);
-    color:var(--text);
+    color:var(--on-accent);
     text-decoration:none;
     font-weight:600;
     font-size:0.9rem;
