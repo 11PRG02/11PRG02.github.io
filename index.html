@@ -59,7 +59,7 @@
     display:flex; align-items:center; justify-content:space-between;
   }
   .nav-brand { display:flex; align-items:center; gap:0.75rem; text-decoration:none; }
-  .nav-logo-img { width:38px; height:38px; object-fit:contain; filter:brightness(1.1); }
+  .nav-logo-img { width:51px; height:51px; object-fit:contain; filter:brightness(1.1); }
   .nav-name { font-weight:700; font-size:0.95rem; color:var(--text); letter-spacing:0.02em; }
   .nav-name span { color:var(--blue-pale); }
   .nav-links { display:flex; gap:0.2rem; }
@@ -104,13 +104,13 @@
   }
   .hero-logo-wrap {
     position:relative; z-index:1;
-    width:120px; height:120px;
+    width:162px; height:162px;
     border-radius:50%;
     background:rgba(255,255,255,0.07);
     border:2px solid rgba(74,128,212,0.5);
     display:flex; align-items:center; justify-content:center;
     margin:0 auto 2rem;
-    padding:10px;
+    padding:13px;
   }
   .hero-logo-wrap img { width:100%; height:100%; object-fit:contain; filter:brightness(1.05); }
   .hero-badge {
@@ -181,6 +181,7 @@
   .student-card { background:var(--bg3); border:1px solid var(--border); border-radius:14px; padding:1.5rem 1.25rem; text-align:center; cursor:pointer; transition:transform .2s, border-color .2s, box-shadow .2s; }
   .student-card:hover { transform:translateY(-5px); border-color:var(--border-hi); box-shadow:0 10px 30px rgba(0,0,0,0.4); }
   .s-avatar { width:60px; height:60px; border-radius:50%; background:linear-gradient(135deg, var(--blue-dark), var(--blue-mid)); border:2px solid var(--blue-light); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1rem; color:var(--on-accent); margin:0 auto 1rem; }
+  .s-role { font-size:0.62rem; font-weight:700; color:var(--blue-light); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.3rem; }
   .s-name { font-size:0.9rem; font-weight:600; color:var(--text); margin-bottom:0.2rem; }
   .s-tags { display:flex; gap:0.3rem; justify-content:center; flex-wrap:wrap; }
   .s-tag { background:rgba(27,79,168,0.3); border:1px solid rgba(74,128,212,0.35); color:var(--blue-pale); font-size:0.63rem; padding:0.15rem 0.45rem; border-radius:4px; }
@@ -247,7 +248,7 @@
 
   /* ── FOOTER ── */
   footer { background:var(--bg2); border-top:1px solid var(--border); padding:3.5rem 2rem; text-align:center; }
-  .footer-logo { width:56px; height:56px; object-fit:contain; margin:0 auto 1rem; display:block; filter:brightness(1.05); }
+  .footer-logo { width:76px; height:76px; object-fit:contain; margin:0 auto 1rem; display:block; filter:brightness(1.05); }
   .footer-name { font-family:var(--serif); font-size:1.2rem; font-weight:800; color:var(--text); margin-bottom:0.3rem; }
   .footer-sub { color:var(--muted); font-size:0.82rem; margin-bottom:1.5rem; }
   .footer-links { display:flex; justify-content:center; gap:2rem; margin-bottom:2rem; }
@@ -280,6 +281,7 @@
   <div class="nav-right">
     <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
+      <a href="#officers">Officers</a>
       <a href="#students">Students</a>
       <a href="#schedule">Schedule</a>
       <a href="#gallery">Gallery</a>
@@ -341,8 +343,17 @@
 
 <hr class="divider"/>
 
+<div class="section-wrap" id="officers">
+  <div class="section-eyebrow">02 · Officers</div>
+  <h2 class="section-title">Class Officers</h2>
+  <p class="section-desc">The team keeping 11PRG02 organized. Click any card to view a full profile.</p>
+  <div class="students-grid" id="officersGrid"></div>
+</div>
+
+<hr class="divider"/>
+
 <div class="section-wrap" id="students">
-  <div class="section-eyebrow">02 · Students</div>
+  <div class="section-eyebrow">03 · Students</div>
   <h2 class="section-title">Meet the Block</h2>
   <p class="section-desc">Click any card to view a full profile.</p>
   <div class="students-grid" id="studentsGrid"></div>
@@ -366,7 +377,7 @@
 <hr class="divider"/>
 
 <div class="section-wrap" id="schedule">
-  <div class="section-eyebrow">03 · Schedule</div>
+  <div class="section-eyebrow">04 · Schedule</div>
   <h2 class="section-title">Class Schedule</h2>
   <p class="section-desc">Weekly timetable for S.Y. 2026–2027 · Room CS411. Select a day.</p>
   <div class="day-tabs" id="dayTabs"></div>
@@ -379,7 +390,7 @@
 <hr class="divider"/>
 
 <div class="section-wrap" id="gallery">
-  <div class="section-eyebrow">04 · Gallery</div>
+  <div class="section-eyebrow">05 · Gallery</div>
   <h2 class="section-title">Photo Gallery</h2>
   <p class="section-desc">Memories from block activities, events, and everyday moments in CS411.</p>
   <div class="gallery-grid" id="galleryGrid"></div>
@@ -392,7 +403,7 @@
 <hr class="divider"/>
 
 <div class="section-wrap" id="developers">
-  <div class="section-eyebrow">05 · Developer</div>
+  <div class="section-eyebrow">06 · Developer</div>
   <h2 class="section-title">Meet the Developer</h2>
   <p class="section-desc">The mind behind this site. Click the card to view the full profile.</p>
   <div class="students-grid" id="developersGrid"></div>
@@ -405,6 +416,7 @@
   <div class="footer-line"></div>
   <div class="footer-links">
     <a href="#about">About</a>
+    <a href="#officers">Officers</a>
     <a href="#students">Students</a>
     <a href="#schedule">Schedule</a>
     <a href="#gallery">Gallery</a>
@@ -415,36 +427,46 @@
 
 <script>
 const students = [
-  { name:"Janzhen Cyan M. Janaban",       initials:"JJ", role:"ewan", specialty:"idk",       lang:"JavaScript", dream:"Full-Stack Dev",     fun:"Codes at 3 AM",          bio:"The go-to when JavaScript breaks. Alex lives front-end and dreams of building the next big app from CS411." },
-  { name:"Krizzel Shane M. Lopez",    initials:"KL", role:"analyst",   specialty:"Data Viz",      lang:"Python",     dream:"Data Scientist",     fun:"Excel wizard",           bio:"Charts are Bianca's love language. Passionate about turning raw data into compelling visual stories." },
-  { name:"John Caleb C Espiritu",    initials:"JE", role:"developer", specialty:"Backend",       lang:"Java",       dream:"Software Engineer",  fun:"Debugs in their sleep",  bio:"Carlo is all about clean, efficient backend logic. OOP enthusiast and aspiring software architect." },
-  { name:"Arsher Lab D. Ditan",       initials:"AD", role:"officer",   specialty:"PM & Dev",      lang:"Python",     dream:"Tech Entrepreneur",  fun:"Class president",        bio:"Our class president keeps everything running smoothly while still finding time to code." },
-  { name:"Killua King C. Eran",  initials:"KE", role:"developer", specialty:"Mobile Apps",   lang:"Kotlin",     dream:"Mobile Dev",         fun:"Owns 5 keyboards",       bio:"Ethan is on a mission to build the most useful mobile apps the Philippines has ever seen." },
-  { name:"Jireh Gleone L. Cahilig",        initials:"JC", role:"designer",  specialty:"UI/UX",         lang:"CSS/HTML",   dream:"UX Designer",        fun:"Color-codes everything", bio:"Fiona sees the world in user journeys and wireframes. Her designs always get the 'wow'." },
-  { name:"Lenard M. Pongpong",   initials:"LP", role:"developer", specialty:"Algorithms",    lang:"C++",        dream:"Systems Engineer",   fun:"Solves LeetCode daily",  bio:"Gabriel loves optimization. Ask him to sort a list and he'll give you 5 faster ways." },
-  { name:"Anne Sarah N. Solomon",    initials:"AS", role:"analyst",   specialty:"Statistics",    lang:"R",          dream:"Business Analyst",   fun:"Stats nerd",             bio:"Numbers never lie — Hannah's philosophy. Headed for the intersection of tech and business." },
-  { name:"Princess Rainne M. Rondon",       initials:"PR", role:"developer", specialty:"Game Dev",      lang:"C#",         dream:"Game Developer",     fun:"Indie dev on weekends",  bio:"Ivan is building his first indie game between homework sessions. Unity is his playground." },
-  { name:"Stephanie G. Laurente",   initials:"SL", role:"designer",  specialty:"Graphic/UI",    lang:"Figma",      dream:"Creative Director",  fun:"Makes all the posters",  bio:"Jasmine is the artist of the block. Every project presentation level jumps when she's involved." },
-  { name:"Kirsten Alexa D. Brigola",    initials:"KB", role:"developer", specialty:"Cybersecurity", lang:"Java Script", dream:"Security Engineer", fun:"CTF champion",           bio:"Kevin thinks like a hacker — to defend better. Already competing in CTF events." },
-  { name:"Alexander Jazz M. Arteza",         initials:"AA", role:"analyst",   specialty:"Databases",     lang:"SQL",        dream:"DBA",                fun:"Organizes everything",   bio:"Lara brings structure to chaos. Her databases are always perfectly normalized." },
-  { name:"Keifer Jade P. Jose",    initials:"KJ", role:"developer", specialty:"Web Dev",       lang:"React",      dream:"Front-End Dev",      fun:"React enthusiast",       bio:"Marco discovered React and never looked back. Building interactive UIs is his happy place." },
-  { name:"Nina Villanueva",  initials:"NV", role:"officer",   specialty:"Org & Dev",     lang:"JavaScript", dream:"CTO someday",        fun:"Vice President",         bio:"Nina balances org duties with a growing love for JavaScript. Already thinking 5 years ahead." },
-  { name:"Oscar Bautista",   initials:"OB", role:"developer", specialty:"IoT",           lang:"C/C++",      dream:"Embedded Engineer",  fun:"Built an LED matrix",    bio:"Oscar connects the physical and digital worlds. Arduino and Raspberry Pi are his toys." },
-  { name:"Patricia Go",      initials:"PG", role:"analyst",   specialty:"ML Basics",     lang:"Python",     dream:"AI Engineer",        fun:"Reads ML papers",        bio:"Patricia is fascinated by machine learning and already diving into sklearn and neural nets." },
-  { name:"Quentin Uy",       initials:"QU", role:"developer", specialty:"APIs",          lang:"Node.js",    dream:"Backend Engineer",   fun:"REST API fanatic",       bio:"Quentin speaks fluent HTTP. If there's a backend to build, he's already halfway done." },
-  { name:"Reina Castro",     initials:"RC", role:"designer",  specialty:"Motion/UI",     lang:"CSS",        dream:"Motion Designer",    fun:"CSS animations guru",    bio:"Reina makes things move beautifully. CSS animations and micro-interactions are her signature." },
-  { name:"Samuel Ong",       initials:"SO", role:"developer", specialty:"Cloud",         lang:"Python",     dream:"Cloud Architect",    fun:"Deploys stuff for fun",   bio:"Samuel is fascinated by serverless and cloud. Already deployed personal projects on AWS." },
-  { name:"Tricia Delos Reyes",initials:"TR",role:"analyst",   specialty:"Visualization", lang:"Tableau",    dream:"Data Analyst",       fun:"Dashboard perfectionist",bio:"Every dashboard Tricia builds looks like it belongs in a Forbes article." },
-  { name:"Uriel Navarro",    initials:"UN", role:"developer", specialty:"Open Source",   lang:"Rust",       dream:"OSS Contributor",    fun:"Has 12 GitHub repos",    bio:"Uriel contributes to open-source in his free time. Rust is his latest obsession." },
-  { name:"Vanessa Reyna",    initials:"VR", role:"analyst",   specialty:"Research",      lang:"Excel/SQL",  dream:"Research Analyst",   fun:"Annotates everything",   bio:"Vanessa pairs analytical rigor with a researcher's curiosity. Always asking 'but why?'" },
-  { name:"Wilfred Chan",     initials:"WC", role:"developer", specialty:"DevOps",        lang:"YAML/Bash",  dream:"DevOps Engineer",    fun:"CI/CD pipeline nerd",    bio:"Wilfred loves automation. If something can be scripted, he's already written the script." },
-  { name:"Xyra Padilla",     initials:"XP", role:"designer",  specialty:"Branding",      lang:"Figma/HTML", dream:"Brand Designer",     fun:"Redesigns apps for fun", bio:"Xyra has a designer's eye and a developer's hands. She builds what she designs." },
-  { name:"Yvan Espiritu",    initials:"YE", role:"developer", specialty:"Blockchain",    lang:"Solidity",   dream:"Blockchain Dev",     fun:"Web3 believer",          bio:"Yvan is convinced Web3 is the future. Already writing smart contracts and learning DeFi." },
-  { name:"Zara Miranda",     initials:"ZM", role:"analyst",   specialty:"Business Intel",lang:"Power BI",   dream:"BI Developer",       fun:"Dashboard connoisseur",  bio:"Zara connects data to business decisions. Power BI dashboards that make management understand data." },
-  { name:"Angelo Reyes",     initials:"AR", role:"developer", specialty:"Web Scraping",  lang:"Python",     dream:"Automation Dev",     fun:"Automates his chores",   bio:"Angelo believes anything repetitive should be automated. His scripts save hours every week." },
-  { name:"Bea Pascual",      initials:"BP", role:"officer",   specialty:"Comms & Dev",   lang:"JavaScript", dream:"Tech Journalist",    fun:"Block secretary",        bio:"Bea documents everything — minutes, code comments, blog posts. The block's voice and memory." },
-  { name:"Chris Navarro",    initials:"CN", role:"developer", specialty:"Networking",    lang:"Python/Cisco",dream:"Network Engineer",  fun:"Mapped the school LAN",  bio:"Chris understands how data travels. Networking fundamentals are his foundation." },
-  { name:"Dana Villanueva",  initials:"DV", role:"analyst",   specialty:"Data Cleaning", lang:"Python/SQL", dream:"Data Engineer",      fun:"Hates dirty data",       bio:"Dana knows clean data is the foundation of everything. ETL pipelines are her specialty." },
+  { name:"Colin M. Yang", initials:"CY", role:"President", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Justin Yuri B. Litiatco", initials:"JL", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"John Cloyd E. Marcos", initials:"JM", role:"Auditor", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Yeshua Ezekiel E. Day-yo", initials:"YD", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Mark Edward P. Españar", initials:"ME", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Adam Leonard S. Sarayno", initials:"AS", role:"Treasurer", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Janzhen Cyan M. Janaban", initials:"JJ", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Karl Patrick A. Giray", initials:"KG", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Radecus E. Molina", initials:"RM", role:"Assistant Secretary", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"James Kiel Vergara Martinez", initials:"JM", role:"PIO", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Rafael G. Sumabat", initials:"RS", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Andrei Lance Mediano", initials:"AM", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Daryn Joseph N. Reodica", initials:"DR", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Arsher Lab D. Ditan", initials:"AD", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Killua King Eran", initials:"KE", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Llance Jhosua I. Joven", initials:"LJ", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Lenard M. Pongpong", initials:"LP", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Daniel Alexander D. Pasay", initials:"DP", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Carl Allen R. Acedillo", initials:"CA", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"David S. Gabasa", initials:"DG", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"John Caleb C. Espiritu", initials:"JE", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Bensim Marc G. Ramos", initials:"BR", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Janeiro Lebron I. Manlulu", initials:"JM", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Nathan Brylee S. Natividad", initials:"NN", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Keira Andrese R. Alejandro", initials:"KA", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Alexander Jazz M. Arteza", initials:"AA", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Keifer Jade P. Jose", initials:"KJ", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"John Benedict D. Malonzo", initials:"JM", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"John Benedict S. Maligaya", initials:"JM", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"James Michael D. Golez", initials:"JG", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Krizzel Shane M. Lopez", initials:"KL", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Kirsten Alexa D. Brigola", initials:"KB", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Chloe Rionna E. Gutierrez", initials:"CG", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Princess Rainne M. Rondon", initials:"PR", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Anne Sarah N. Solomon", initials:"AS", role:"Vice President", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Mitzi Claire P. Ortega", initials:"MO", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Jireh Gleone L. Cahilig", initials:"JC", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Stephanie G. Laurente", initials:"SL", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Danelle Kate A. Yap", initials:"DY", role:"Secretary", specialty:"", lang:"", dream:"", fun:"", bio:"" },
+  { name:"Sebrina I. Thomas", initials:"ST", role:"", specialty:"", lang:"", dream:"", fun:"", bio:"" },
 ];
 
 const developers = [
@@ -500,7 +522,7 @@ const scheduleData = {
 };
 
 const gallery = [
-  { emoji:"🏫", bg:"gal-1", caption:"First day of classes",       date:"June 15, 2026" },
+  { img:"first-day-photo.jpg", emoji:"🏫", bg:"gal-1", caption:"First day of classes",       date:"June 15, 2026" },
   { emoji:"💻", bg:"gal-2", caption:"First ICT Lab session",      date:"Coming soon" },
   { emoji:"🎤", bg:"gal-3", caption:"Project presentation day",   date:"Coming soon"  },
   { emoji:"🏆", bg:"gal-1", caption:"Block recognition awards",   date:"Coming soon"  },
@@ -511,31 +533,49 @@ const gallery = [
   { emoji:"🎓", bg:"gal-3", caption:"Graduation practice run",    date:"Coming soon"  },
 ];
 
-function renderCards(gridId, data, arrName) {
+function renderCards(gridId, data, arrName, indexMap) {
   const grid = document.getElementById(gridId);
   grid.innerHTML = data.map((s, i) => {
-    const tags = [s.specialty, ...s.lang.split(',').map(l => l.trim())]
+    const tags = [s.specialty, ...(s.lang ? s.lang.split(',').map(l => l.trim()) : [])]
+      .filter(t => t && t.trim())
       .map(t => `<span class="s-tag">${t}</span>`).join('');
-    return `<div class="student-card" onclick="openModal(${arrName}, ${i})">
+    const roleBadge = s.role ? `<div class="s-role">${s.role}</div>` : '';
+    const realIndex = indexMap ? indexMap[i] : i;
+    return `<div class="student-card" onclick="openModal(${arrName}, ${realIndex})">
       <div class="s-avatar">${s.initials}</div>
+      ${roleBadge}
       <div class="s-name">${s.name}</div>
       <div class="s-tags">${tags}</div>
     </div>`;
   }).join('');
 }
 renderCards('studentsGrid', students, 'students');
+const officerEntries = students
+  .map((s, i) => ({ s, i }))
+  .filter(({ s }) => s.role && s.role.trim());
+const officerOrder = ["President","Vice President","Secretary","Assistant Secretary","Treasurer","Auditor","PIO"];
+officerEntries.sort((a, b) => officerOrder.indexOf(a.s.role) - officerOrder.indexOf(b.s.role));
+renderCards('officersGrid', officerEntries.map(e => e.s), 'students', officerEntries.map(e => e.i));
 renderCards('developersGrid', developers, 'developers');
 
 function openModal(arr, i) {
   const s = arr[i];
   document.getElementById('mAvatar').textContent = s.initials;
   document.getElementById('mName').textContent   = s.name;
-  document.getElementById('mSpec').textContent   = s.specialty;
-  document.getElementById('mLang').textContent   = s.lang;
-  document.getElementById('mDream').textContent  = s.dream;
-  document.getElementById('mFun').textContent    = s.fun;
-  document.getElementById('mBio').textContent    = s.bio;
+  setModalField('mSpec',  s.specialty);
+  setModalField('mLang',  s.lang);
+  setModalField('mDream', s.dream);
+  setModalField('mFun',   s.fun);
+  const bioEl = document.getElementById('mBio');
+  bioEl.textContent = s.bio || '';
+  bioEl.style.display = (s.bio && s.bio.trim()) ? '' : 'none';
   document.getElementById('studentModal').classList.add('open');
+}
+function setModalField(id, value) {
+  const el = document.getElementById(id);
+  el.textContent = value || '';
+  const row = el.closest('.m-item');
+  if (row) row.style.display = (value && value.trim()) ? '' : 'none';
 }
 document.getElementById('modalClose').onclick = () => document.getElementById('studentModal').classList.remove('open');
 document.getElementById('studentModal').addEventListener('click', e => { if(e.target===e.currentTarget) e.currentTarget.classList.remove('open'); });
@@ -566,14 +606,20 @@ function renderSchedule(day) {
 }
 renderSchedule(days[0]);
 
-document.getElementById('galleryGrid').innerHTML = gallery.map(g => `
-  <div class="gal-item">
-    <div class="gal-ph ${g.bg}">
-      <div class="gal-icon">${g.emoji}</div>
-      <div class="gal-caption">${g.caption}</div>
-      <div class="gal-date">${g.date}</div>
+document.getElementById('galleryGrid').innerHTML = gallery.map(g => {
+  const photo = g.img
+    ? `<img src="${g.img}" alt="${g.caption}" style="width:100%; display:block;"/>`
+    : '';
+  const placeholder = g.img ? '' : `<div class="gal-icon">${g.emoji}</div>`;
+  return `<div class="gal-item">
+    <div class="gal-ph ${g.img ? '' : g.bg}" style="${g.img ? 'padding:0; min-height:0;' : ''}">
+      ${photo}
+      ${placeholder}
+      <div class="gal-caption" style="${g.img ? 'padding:0.9rem 1rem 0.2rem;' : ''}">${g.caption}</div>
+      <div class="gal-date" style="${g.img ? 'padding:0 1rem 0.9rem;' : ''}">${g.date}</div>
     </div>
-  </div>`).join('');
+  </div>`;
+}).join('');
 
 document.getElementById('hamburger').onclick = () => document.getElementById('navLinks').classList.toggle('open');
 document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
