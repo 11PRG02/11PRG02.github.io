@@ -204,6 +204,37 @@
   .m-item span { font-size:0.88rem; color:var(--text); }
   .m-bio { color:var(--muted); font-size:0.86rem; line-height:1.75; border-top:1px solid var(--border); padding-top:1rem; }
 
+  /* ── DISCIPLINE MODAL ── */
+  .modal-wide { max-width:780px; max-height:85vh; display:flex; flex-direction:column; padding:2.25rem 2.25rem 1.75rem; }
+  .modal-wide h2 { margin-bottom:0.35rem; }
+  .disc-sub { text-align:center; color:var(--muted); font-size:0.8rem; margin-bottom:1.5rem; }
+  .disc-tabs { display:flex; gap:0.4rem; flex-wrap:wrap; justify-content:center; margin-bottom:1.5rem; flex-shrink:0; }
+  .disc-tab { background:var(--bg4); border:1px solid var(--border); color:var(--muted); padding:0.4rem 0.95rem; border-radius:18px; font-size:0.74rem; font-weight:600; cursor:pointer; font-family:var(--sans); transition:all .2s; }
+  .disc-tab:hover { border-color:var(--border-hi); color:var(--text); }
+  .disc-tab.active { background:var(--blue); border-color:var(--blue-light); color:var(--on-accent); }
+  .disc-body { overflow-y:auto; padding-right:0.5rem; }
+  .disc-body::-webkit-scrollbar { width:5px; }
+  .disc-body::-webkit-scrollbar-thumb { background:var(--blue-light); border-radius:3px; }
+  .disc-panel { display:none; }
+  .disc-panel.active { display:block; animation:fadein .18s ease; }
+  @keyframes fadein { from{opacity:0} to{opacity:1} }
+  .disc-list { list-style:none; counter-reset:disc-counter; margin-bottom:1.5rem; }
+  .disc-list li { counter-increment:disc-counter; position:relative; padding:0.6rem 0 0.6rem 2.1rem; font-size:0.85rem; color:var(--text); line-height:1.55; border-bottom:1px solid rgba(122,144,184,0.12); }
+  .disc-list li:last-child { border-bottom:none; }
+  .disc-list li::before { content:counter(disc-counter); position:absolute; left:0; top:0.6rem; width:1.5rem; height:1.5rem; border-radius:6px; background:rgba(27,79,168,0.25); border:1px solid rgba(74,128,212,0.35); color:var(--blue-pale); font-size:0.7rem; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .disc-note { background:rgba(27,79,168,0.1); border-left:3px solid var(--blue-light); border-radius:0 8px 8px 0; padding:0.85rem 1rem; font-size:0.78rem; color:var(--muted); line-height:1.6; margin:-0.5rem 0 1.5rem; }
+  .disc-section-label { font-size:0.7rem; font-weight:700; color:var(--blue-light); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.5rem; }
+  .disc-section-label::before { content:''; width:18px; height:2px; background:var(--blue-light); border-radius:1px; }
+  .disc-sanc-table { width:100%; border-collapse:collapse; border-radius:10px; overflow:hidden; border:1px solid var(--border); margin-bottom:0.5rem; }
+  .disc-sanc-table th { text-align:left; padding:0.7rem 1rem; font-size:0.66rem; color:var(--on-accent); font-weight:700; letter-spacing:0.08em; text-transform:uppercase; background:linear-gradient(90deg, var(--blue-dark), var(--blue)); }
+  .disc-sanc-table td { padding:0.65rem 1rem; font-size:0.82rem; border-bottom:1px solid rgba(27,79,168,0.15); color:var(--text); }
+  .disc-sanc-table tr:last-child td { border-bottom:none; }
+  .disc-sanc-table tbody tr:hover td { background:rgba(27,79,168,0.1); }
+  .disc-gadget-list { display:flex; flex-direction:column; gap:0.5rem; margin-bottom:0.5rem; }
+  .disc-gadget-row { display:flex; justify-content:space-between; align-items:center; background:var(--bg4); border:1px solid var(--border); border-radius:8px; padding:0.6rem 1rem; font-size:0.82rem; }
+  .disc-gadget-row span:first-child { color:var(--muted); font-weight:600; }
+  .disc-gadget-row span:last-child { color:var(--text); }
+
   /* ── SCHEDULE ── */
   .day-tabs { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:2rem; }
   .day-tab { background:var(--bg3); border:1px solid var(--border); color:var(--muted); padding:0.45rem 1.2rem; border-radius:7px; font-size:0.82rem; font-weight:500; cursor:pointer; font-family:var(--sans); transition:all .2s; }
@@ -260,6 +291,14 @@
   .footer-links a:hover { color:var(--blue-pale); }
   .footer-line { width:60px; height:2px; background:linear-gradient(90deg, transparent, var(--blue-light), transparent); margin:0 auto 1.5rem; }
   .footer-copy { color:rgba(122,144,184,0.45); font-size:0.72rem; }
+  .footer-discipline-btn {
+    margin:1.75rem auto 0; display:inline-flex; align-items:center; gap:0.5rem;
+    background:var(--bg3); border:1px solid var(--border); color:var(--muted);
+    font-family:var(--sans); font-size:0.72rem; font-weight:600;
+    letter-spacing:0.04em; padding:0.55rem 1.1rem; border-radius:20px;
+    cursor:pointer; transition:border-color .2s, color .2s, transform .2s;
+  }
+  .footer-discipline-btn:hover { border-color:var(--border-hi); color:var(--blue-pale); transform:translateY(-1px); }
 
   @media(max-width:768px) {
     .nav-links { display:none; }
@@ -272,7 +311,7 @@
     .hero-stat:last-child { border-bottom:none; }
     .section-wrap { padding:4rem 1.5rem; }
   }
-  @media(max-width:480px) { .gallery-grid{columns:1;} .m-grid{grid-template-columns:1fr;} }
+  @media(max-width:480px) { .gallery-grid{columns:1;} .m-grid{grid-template-columns:1fr;} .modal-wide{padding:1.75rem 1.25rem 1.25rem;} .disc-sanc-table th,.disc-sanc-table td{padding:0.55rem 0.6rem; font-size:0.74rem;} }
 </style>
 </head>
 <body>
@@ -378,6 +417,179 @@
   </div>
 </div>
 
+<div class="modal-overlay" id="disciplineModal">
+  <div class="modal modal-wide">
+    <button class="modal-close" id="disciplineModalClose">✕</button>
+    <h2>Student Discipline Guidelines</h2>
+    <p class="disc-sub">Consolidated discipline policy · Levels of offenses &amp; sanctions framework</p>
+
+    <div class="disc-tabs" id="discTabs">
+      <button class="disc-tab active" data-panel="minor">Minor Offenses</button>
+      <button class="disc-tab" data-panel="catA">Category A</button>
+      <button class="disc-tab" data-panel="catB">Category B</button>
+      <button class="disc-tab" data-panel="catC">Category C</button>
+      <button class="disc-tab" data-panel="catD">Category D</button>
+    </div>
+
+    <div class="disc-body">
+
+      <div class="disc-panel active" id="panel-minor">
+        <div class="disc-section-label">Minor Offenses</div>
+        <ol class="disc-list">
+          <li>Failure to present an excuse letter for absences.</li>
+          <li>Repeated tardiness (three [3] times in two [2] weeks).</li>
+          <li>Failure to return reply slips, violation reports, and other official correspondences.</li>
+          <li>Non-participation in flag ceremony, prayers, meetings, and other official school activities.</li>
+          <li>Wearing of inappropriate attire, improper or incomplete school uniform, including P.E. uniform.</li>
+          <li>Possession of gambling paraphernalia.</li>
+          <li>Non-observance of good personal grooming and hygiene according to the standards prescribed by the school.</li>
+          <li>Wearing of multiple earrings and/or dangling earrings for female students, and wearing of earrings, caps, or bonnets for male students.</li>
+          <li>Loitering in restricted areas during class hours.</li>
+          <li>Strolling around school premises after being sent home due to illness.</li>
+          <li>Using and/or failure to switch off cellular phones and other electronic gadgets or devices during class hours, Holy Mass, or any other related activities.</li>
+          <li>Use of abusive or indecent language.</li>
+          <li>Any offenses analogous to those mentioned above.</li>
+        </ol>
+        <div class="disc-note">Note: not incurring a sanction in a given period does not preclude the Discipline Office from later imposing a penalty for excessive or deliberate tardiness. Tardiness may be excused at the school's discretion if due to unavoidable circumstances.</div>
+
+        <div class="disc-section-label">General Sanctions — Minor &amp; Major</div>
+        <table class="disc-sanc-table" style="margin-bottom:1.5rem;">
+          <thead><tr><th>Minor Offenses</th><th>Major Offenses</th></tr></thead>
+          <tbody>
+            <tr><td>Verbal Warning</td><td>Suspension</td></tr>
+            <tr><td>Written Reprimand</td><td>Non-readmission</td></tr>
+            <tr><td>Community Service</td><td>Dismissal</td></tr>
+            <tr><td>Suspension</td><td></td></tr>
+          </tbody>
+        </table>
+
+        <div class="disc-section-label">Gadget Policy — Specific Sanctions</div>
+        <div class="disc-gadget-list">
+          <div class="disc-gadget-row"><span>1st Offense</span><span>Verbal Warning</span></div>
+          <div class="disc-gadget-row"><span>2nd Offense</span><span>Written Reprimand</span></div>
+          <div class="disc-gadget-row"><span>3rd Offense</span><span>Confiscation of gadget (1 week)</span></div>
+          <div class="disc-gadget-row"><span>4th Offense</span><span>Confiscation of gadget (1 month)</span></div>
+          <div class="disc-gadget-row"><span>5th Offense</span><span>Confiscation of gadget (1 semester)</span></div>
+        </div>
+      </div>
+
+      <div class="disc-panel" id="panel-catA">
+        <div class="disc-section-label">Major Offenses — Category A</div>
+        <ol class="disc-list">
+          <li>Truancy.</li>
+          <li>Absenteeism.</li>
+          <li>Irrelevant conduct during Holy Mass, Angelus, and other religious activities of the school.</li>
+          <li>Bringing in/possession of the pellet or air gun; using paper bullets propelled with a rubber band.</li>
+          <li>Unauthorized use of any school facility or property.</li>
+          <li>Bringing in outsiders to the virtual classroom by providing the link to such.</li>
+          <li>Bringing in outsiders whose presence in the school has not been authorized by the school authorities.</li>
+          <li>Possession of a vape (e-cigarette) or a cigarette on campus and during off-campus activities.</li>
+          <li>Possession of contraceptives such as condoms and the like.</li>
+          <li>Non-compliance with the scheduled community service.</li>
+          <li>Any offenses analogous to those mentioned above.</li>
+        </ol>
+        <div class="disc-section-label">Sanctions</div>
+        <table class="disc-sanc-table">
+          <thead><tr><th>Offense</th><th>Sanction</th></tr></thead>
+          <tbody>
+            <tr><td>1st Offense</td><td>Community service equivalent to 15 hours</td></tr>
+            <tr><td>2nd Offense</td><td>3-day suspension</td></tr>
+            <tr><td>3rd Offense</td><td>5-day suspension</td></tr>
+            <tr><td>4th Offense</td><td>Non-readmission</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="disc-panel" id="panel-catB">
+        <div class="disc-section-label">Major Offenses — Category B</div>
+        <ol class="disc-list">
+          <li>Violation of the safety and security plans.</li>
+          <li>Possession of alcoholic drinks.</li>
+          <li>Cutting/skipping classes.</li>
+          <li>Gross disrespect towards classmates, class officers, and other students.</li>
+          <li>Public display of intimate gestures or affection.</li>
+          <li>Smoking inside or outside the campus while wearing the school uniform or school ID.</li>
+          <li>Any offenses analogous to those mentioned above.</li>
+        </ol>
+        <div class="disc-section-label">Sanctions</div>
+        <table class="disc-sanc-table">
+          <thead><tr><th>Offense</th><th>Sanction</th></tr></thead>
+          <tbody>
+            <tr><td>1st Offense</td><td>5-day suspension</td></tr>
+            <tr><td>2nd Offense</td><td>7-day suspension</td></tr>
+            <tr><td>3rd Offense</td><td>10-day suspension</td></tr>
+            <tr><td>4th Offense</td><td>Non-readmission</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="disc-panel" id="panel-catC">
+        <div class="disc-section-label">Major Offenses — Category C</div>
+        <ol class="disc-list">
+          <li>Commission of 6th minor offense.</li>
+          <li>Possession, distribution, lending of pornographic magazines/pictures/objects, whether in print or electronic form.</li>
+          <li>Spreading gossip, libelous and slanderous remarks against classmates, teachers, and other school personnel.</li>
+          <li>Posting of indecent pictures/images on social media.</li>
+          <li>Unauthorized possession and/or drinking of alcoholic beverages within school premises, whether or not in connection with an official school activity; drinking outside the premises in connection with an unofficial school activity; drinking outside the premises while wearing the school uniform; or entering campus under the influence of alcohol.</li>
+          <li>Initiating and/or participating in brawls on school premises or during off-campus activities.</li>
+          <li>Any offenses analogous to those mentioned above.</li>
+        </ol>
+        <div class="disc-section-label">Sanctions</div>
+        <table class="disc-sanc-table">
+          <thead><tr><th>Offense</th><th>Sanction</th></tr></thead>
+          <tbody>
+            <tr><td>1st Offense</td><td>10-day suspension</td></tr>
+            <tr><td>2nd Offense</td><td>20-day suspension</td></tr>
+            <tr><td>3rd Offense</td><td>Dismissal</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="disc-panel" id="panel-catD">
+        <div class="disc-section-label">Major Offenses — Category D</div>
+        <ol class="disc-list">
+          <li>Commission of 7th minor offense.</li>
+          <li>Using the school name, emblem, and/or logo without the approval of the school.</li>
+          <li>Tampering of: school documents; bulletin boards and other notices; computer applications, software programs, and other information technology systems of the school; or other students' property.</li>
+          <li>Extortion.</li>
+          <li>Bribing or attempting to bribe faculty members, employees, school officials, and fellow students.</li>
+          <li>Possession or use of deadly, pointed/bladed weapons, explosives, including firecrackers.</li>
+          <li>Forgery.</li>
+          <li>Gambling in any form.</li>
+          <li>Any form of academic dishonesty which includes cheating and plagiarism.</li>
+          <li>Stealing (attempted or consummated).</li>
+          <li>Vandalism or any willful destruction of school property.</li>
+          <li>Gross act of disrespect, in words or deeds, which tends to put any member of the faculty, school officials, or staff in ridicule.</li>
+          <li>Dishonesty, lying, or any form of deception.</li>
+          <li>Bringing in outsiders and/or causing an outsider to get involved in a dispute among Adamsonians.</li>
+          <li>Photo and video voyeurism.</li>
+          <li>Instigating, leading, or participating in activities leading to disruption of classes.</li>
+          <li>Publishing or circulating, whether in print or online, false and malicious information about a student, faculty member, or any school official.</li>
+          <li>Threatening, intimidating, or coercing any member of the school community.</li>
+          <li>Hazing.</li>
+          <li>Bullying in any form.</li>
+          <li>Recruiting students to join fraternities/sororities, gangs, and the like; being a member of a fraternity/sorority, following DepEd Order No. 20 s. 1992.</li>
+          <li>Hooliganism.</li>
+          <li>Sexual misconduct in any form.</li>
+          <li>Inflicting or attempting to inflict bodily injury upon another.</li>
+          <li>Bringing in, possession, or use of prohibited drugs.</li>
+          <li>Acts of subversion, insurgency, insurrection, or rebellion.</li>
+          <li>Posting indecently in any print or electronic media or participating in indecent shows, films, contests, or prostitution activities.</li>
+          <li>Posting of nude photos and sexual videos.</li>
+          <li>Forcing or inciting someone to commit an illegal act.</li>
+          <li>Misuse of student funds.</li>
+          <li>Commission of offenses punishable by the Revised Penal Code.</li>
+          <li>Any offenses analogous to those mentioned above.</li>
+        </ol>
+        <div class="disc-note">Note: the school adheres to the definition of bullying, including its different forms, as provided in the IRR of R.A. No. 10627.</div>
+        <div class="disc-section-label">Sanctions</div>
+        <div class="disc-note" style="margin-bottom:0;">Depending on the gravity of the offense, the Discipline Committee reserves the discretion to impose the penalty of either <strong style="color:var(--text)">Non-readmission</strong> or <strong style="color:var(--text)">Dismissal</strong>.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <hr class="divider"/>
 
 <div class="section-wrap" id="schedule">
@@ -427,6 +639,7 @@
     <a href="#developers">Developer</a>
   </div>
   <div class="footer-copy">© 2026–2027 11PRG02 · CS411 · Adamson University</div>
+  <button class="footer-discipline-btn" id="disciplineBtn" type="button">📋 Student Discipline Guide</button>
 </footer>
 
 <script>
@@ -583,6 +796,20 @@ function setModalField(id, value) {
 }
 document.getElementById('modalClose').onclick = () => document.getElementById('studentModal').classList.remove('open');
 document.getElementById('studentModal').addEventListener('click', e => { if(e.target===e.currentTarget) e.currentTarget.classList.remove('open'); });
+
+const disciplineModal = document.getElementById('disciplineModal');
+document.getElementById('disciplineBtn').onclick = () => disciplineModal.classList.add('open');
+document.getElementById('disciplineModalClose').onclick = () => disciplineModal.classList.remove('open');
+disciplineModal.addEventListener('click', e => { if (e.target === e.currentTarget) e.currentTarget.classList.remove('open'); });
+document.querySelectorAll('.disc-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.disc-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.disc-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+    document.querySelector('.disc-body').scrollTop = 0;
+  });
+});
 
 const days = Object.keys(scheduleData);
 const tabsEl = document.getElementById('dayTabs');
