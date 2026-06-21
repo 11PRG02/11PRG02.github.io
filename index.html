@@ -260,17 +260,51 @@
   .about-banner strong { color:var(--text); }
   .about-banner .accent { color:var(--lime-text); font-weight:700; }
 
-  /* ── STUDENTS (metal panels) ── */
-  .students-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:1.1rem; }
-  .student-card {
-    background:linear-gradient(180deg, #fafafa, #d8d8d8 8%, #b0b0b0 50%, #909090 52%, #c8c8c8 92%, #e8e8e8);
-    border:1px solid var(--chrome-5);
-    border-radius:14px; padding:1.5rem 1.25rem; text-align:center; cursor:pointer;
-    transition:transform .15s, box-shadow .15s; position:relative; overflow:hidden;
+  /* ── STUDENT SEARCH/FILTER ── */
+  .student-search-bar { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; margin-bottom:1rem; }
+  .search-input-wrap {
+    flex:1; min-width:220px; display:flex; align-items:center; gap:0.6rem;
+    background:linear-gradient(180deg, #e2e2e2, #f8f8f8 12%, #fff 30%); border:1px solid var(--chrome-5);
+    border-radius:20px; padding:0.55rem 1.1rem;
+    box-shadow:0 1px 3px rgba(0,0,0,0.25) inset, 0 1px 0 rgba(255,255,255,0.6);
+  }
+  .search-icon { font-size:0.85rem; opacity:0.6; flex-shrink:0; }
+  .search-input { border:none; outline:none; background:transparent; font-family:var(--sans); font-size:0.85rem; color:var(--text); width:100%; }
+  .search-input::placeholder { color:#9aa1a8; }
+  .filter-pills { display:flex; gap:0.5rem; flex-wrap:wrap; }
+  .filter-pill {
+    background:linear-gradient(180deg, #fafafa, #d8d8d8 50%, #b8b8b8); border:1px solid var(--chrome-5);
+    color:#333; padding:0.5rem 1.1rem; border-radius:18px; font-size:0.76rem; font-weight:700; cursor:pointer;
+    font-family:var(--sans); transition:all .15s; box-shadow:0 1px 0 rgba(255,255,255,0.7) inset, 0 1px 2px rgba(0,0,0,0.15);
+    white-space:nowrap;
+  }
+  .filter-pill:hover { color:#000; }
+  .filter-pill.active {
+    background:linear-gradient(180deg, var(--lime-light), var(--lime) 48%, var(--lime-dark)); border-color:var(--lime-dark); color:#173a00;
+    box-shadow:0 1px 0 rgba(255,255,255,0.6) inset, 0 2px 6px rgba(0,0,0,0.3); text-shadow:0 1px 0 rgba(255,255,255,0.3);
+  }
+  .search-result-count { font-size:0.74rem; color:var(--muted); margin-bottom:1.25rem; font-weight:600; }
+  .no-results {
+    text-align:center; padding:3rem 1.5rem; color:var(--muted); font-size:0.9rem;
+    border:1px dashed var(--border-hi); border-radius:12px; background:rgba(255,255,255,0.4);
+  }
+  .student-card.hidden { display:none; }
+
+  /* ── STUDENTS (metal panel, segmented like hero-stats) ── */
+  .students-grid {
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr));
+    gap:0; border:1px solid var(--chrome-5); border-radius:12px; overflow:hidden;
     box-shadow:0 1px 0 rgba(255,255,255,0.8) inset, 0 4px 14px rgba(0,0,0,0.3);
   }
+  .student-card {
+    background:linear-gradient(180deg, #fafafa, #d8d8d8 8%, #b0b0b0 50%, #909090 52%, #c8c8c8 92%, #e8e8e8);
+    border:none; border-right:1px solid rgba(0,0,0,0.25); border-bottom:1px solid rgba(0,0,0,0.25);
+    border-radius:0; padding:1.5rem 1.25rem; text-align:center; cursor:pointer;
+    transition:background .15s; position:relative; overflow:hidden;
+  }
+  .student-card::after { content:''; position:absolute; right:-1px; top:8%; bottom:8%; width:1px; background:rgba(255,255,255,0.5); pointer-events:none; }
   .student-card::before { content:none; }
-  .student-card:hover { transform:translateY(-4px); box-shadow:0 1px 0 rgba(255,255,255,0.8) inset, 0 12px 26px rgba(0,0,0,0.42); border-color:var(--lime-dark); }
+  .student-card:hover { background:linear-gradient(180deg, #f6ffe8, #d8edab 8%, #b8d97a 50%, #9cc25c 52%, #c4e08a 92%, #e8f5cc); }
   .s-avatar {
     width:60px; height:60px; border-radius:50%;
     background:radial-gradient(circle at 32% 28%, #6fb4ff, var(--blue) 55%, var(--blue-dark) 100%);
@@ -385,6 +419,30 @@
   .disc-gadget-row span:last-child { color:var(--text); }
 
   /* ── SCHEDULE ── */
+  .live-panel {
+    display:flex; align-items:center; gap:1.1rem;
+    border:1px solid var(--chrome-5); border-radius:12px; padding:1.1rem 1.5rem; margin-bottom:2rem;
+    background:linear-gradient(180deg, #3a3e42, #1c1f22 50%, #121416);
+    box-shadow:0 1px 0 rgba(255,255,255,0.15) inset, 0 4px 14px rgba(0,0,0,0.4);
+  }
+  .live-led {
+    width:13px; height:13px; border-radius:50%; flex-shrink:0;
+    background:radial-gradient(circle at 35% 30%, #e8e8e8, var(--chrome-4) 70%);
+    box-shadow:0 1px 2px rgba(0,0,0,0.5) inset;
+    transition:background .3s, box-shadow .3s;
+  }
+  .live-led.on { background:radial-gradient(circle at 35% 30%, #d8ff9a, var(--lime) 60%, var(--lime-dark)); box-shadow:0 0 8px 2px rgba(141,198,63,0.85), 0 1px 1px rgba(0,0,0,0.3) inset; animation:livepulse 1.8s ease-in-out infinite; }
+  .live-led.soon { background:radial-gradient(circle at 35% 30%, #ffe89a, #f0b429 60%, #c98a0f); box-shadow:0 0 8px 2px rgba(240,180,41,0.85); }
+  @keyframes livepulse { 0%,100%{opacity:1} 50%{opacity:0.55} }
+  .live-info { flex:1; min-width:0; }
+  .live-label { font-size:0.62rem; font-weight:700; color:var(--lime-light); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.2rem; }
+  .live-subject { font-size:1.05rem; font-weight:700; color:#fff; text-shadow:0 1px 1px rgba(0,0,0,0.5); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .live-divider { width:1px; align-self:stretch; background:linear-gradient(180deg, transparent, rgba(255,255,255,0.25), transparent); flex-shrink:0; }
+  .live-countdown { text-align:right; flex-shrink:0; }
+  .live-time { font-family:var(--serif); font-size:1.5rem; font-weight:800; color:#fff; display:block; line-height:1; text-shadow:0 1px 1px rgba(0,0,0,0.5); font-variant-numeric:tabular-nums; }
+  .live-time-lbl { font-size:0.6rem; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.1em; font-weight:700; }
+  @media(max-width:480px) { .live-panel{flex-wrap:wrap;} .live-divider{display:none;} .live-countdown{text-align:left; width:100%;} }
+
   .day-tabs { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:2rem; }
   .day-tab {
     background:linear-gradient(180deg, #fafafa, #d8d8d8 50%, #b8b8b8); border:1px solid var(--chrome-5);
@@ -412,6 +470,11 @@
   .sched-table tr.break-row td { background:rgba(0,0,0,0.22) !important; color:rgba(255,255,255,0.65); font-size:0.78rem; font-style:italic; text-shadow:none; }
 
   /* ── GALLERY ── */
+  .gallery-frame {
+    border:1px solid var(--chrome-5); border-radius:14px; padding:1rem;
+    background:linear-gradient(180deg, #e2e2e2, #c8c8c8 8%, #a8a8a8 50%, #989898 52%, #c0c0c0 92%, #dcdcdc);
+    box-shadow:0 1px 0 rgba(255,255,255,0.8) inset, 0 4px 14px rgba(0,0,0,0.3);
+  }
   .gallery-grid { columns:3; gap:1rem; }
   .gal-item {
     break-inside:avoid; margin-bottom:1rem; border-radius:10px; overflow:hidden; border:1px solid var(--chrome-5); cursor:pointer;
@@ -427,6 +490,7 @@
   .gal-1 { background:linear-gradient(180deg, #fafafa, #cfe3fb 8%, #9bc4ed 50%, #7fa8d6 52%, #b8d4f1 92%, #e8f2fc); }
   .gal-2 { background:linear-gradient(180deg, #fafafa, #d9eebb 8%, #a8d175 50%, #8fb85a 52%, #c0e09a 92%, #ecf7dd); }
   .gal-3 { background:linear-gradient(180deg, #fafafa, #d8d8d8 8%, #b0b0b0 50%, #909090 52%, #c8c8c8 92%, #e8e8e8); }
+
 
   .upload-hint {
     background:linear-gradient(180deg, #fafafa, #e2e5e8); border:2px dashed var(--border-hi); border-radius:12px; padding:2rem; text-align:center; margin-top:2rem;
@@ -578,7 +642,21 @@
   <div class="section-eyebrow">03 · Students</div>
   <h2 class="section-title">Meet the Block</h2>
   <p class="section-desc">Click any card to view a full profile.</p>
+
+  <div class="student-search-bar">
+    <div class="search-input-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="studentSearch" class="search-input" placeholder="Search by name…" autocomplete="off"/>
+    </div>
+    <div class="filter-pills" id="filterPills">
+      <button class="filter-pill active" data-filter="all">All</button>
+      <button class="filter-pill" data-filter="officer">Officers Only</button>
+    </div>
+  </div>
+  <div class="search-result-count" id="searchResultCount"></div>
+
   <div class="students-grid" id="studentsGrid"></div>
+  <div class="no-results" id="noResults" style="display:none;">No students match your search.</div>
 </div>
 
 <div class="modal-overlay" id="studentModal">
@@ -775,6 +853,20 @@
   <div class="section-eyebrow">04 · Schedule</div>
   <h2 class="section-title">Class Schedule</h2>
   <p class="section-desc">Weekly timetable for S.Y. 2026–2027 · Room CS411. Select a day.</p>
+
+  <div class="live-panel" id="livePanel">
+    <div class="live-led" id="liveLed"></div>
+    <div class="live-info">
+      <div class="live-label" id="liveLabel">CHECKING SCHEDULE…</div>
+      <div class="live-subject" id="liveSubject">—</div>
+    </div>
+    <div class="live-divider"></div>
+    <div class="live-countdown">
+      <span class="live-time" id="liveTime">--:--</span>
+      <span class="live-time-lbl" id="liveTimeLbl">remaining</span>
+    </div>
+  </div>
+
   <div class="day-tabs" id="dayTabs"></div>
   <table class="sched-table">
     <thead><tr><th>Time</th><th>Subject</th><th>Type</th></tr></thead>
@@ -788,7 +880,9 @@
   <div class="section-eyebrow">05 · Gallery</div>
   <h2 class="section-title">Photo Gallery</h2>
   <p class="section-desc">Memories from block activities, events, and everyday moments in CS411.</p>
-  <div class="gallery-grid" id="galleryGrid"></div>
+  <div class="gallery-frame">
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
   <div class="upload-hint">
     <p>Want to see more of our memories?</p>
     <a href="https://drive.google.com/drive/folders/1qecAK0TNHZal3pHTAkqkDnt-CwTyVv1G?usp=sharing" target="_blank" class="drive-btn">📁 View Full Gallery on Google Drive</a>
@@ -945,7 +1039,48 @@ function renderCards(gridId, data, arrName, indexMap) {
     </div>`;
   }).join('');
 }
-renderCards('studentsGrid', students, 'students');
+function renderStudentsGrid() {
+  const query = (document.getElementById('studentSearch').value || '').trim().toLowerCase();
+  const activeFilter = document.querySelector('.filter-pill.active').dataset.filter;
+
+  const entries = students
+    .map((s, i) => ({ s, i }))
+    .filter(({ s }) => {
+      const matchesQuery = !query || s.name.toLowerCase().includes(query);
+      const matchesFilter = activeFilter === 'all' || (activeFilter === 'officer' && s.role && s.role.trim());
+      return matchesQuery && matchesFilter;
+    });
+
+  const grid = document.getElementById('studentsGrid');
+  const noResults = document.getElementById('noResults');
+  const countEl = document.getElementById('searchResultCount');
+
+  if (entries.length === 0) {
+    grid.innerHTML = '';
+    grid.style.display = 'none';
+    noResults.style.display = '';
+  } else {
+    grid.style.display = '';
+    noResults.style.display = 'none';
+    renderCards('studentsGrid', entries.map(e => e.s), 'students', entries.map(e => e.i));
+  }
+
+  if (query || activeFilter !== 'all') {
+    countEl.textContent = `Showing ${entries.length} of ${students.length} students`;
+  } else {
+    countEl.textContent = '';
+  }
+}
+document.getElementById('studentSearch').addEventListener('input', renderStudentsGrid);
+document.querySelectorAll('.filter-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    renderStudentsGrid();
+  });
+});
+renderStudentsGrid();
+
 const officerEntries = students
   .map((s, i) => ({ s, i }))
   .filter(({ s }) => s.role && s.role.trim());
@@ -1015,6 +1150,85 @@ function renderSchedule(day) {
   }).join('');
 }
 renderSchedule(days[0]);
+
+/* ── LIVE COUNTDOWN ── */
+function parseTimeToToday(timeStr, ref) {
+  const m = timeStr.trim().match(/(\d+):(\d+)(AM|PM)/i);
+  if (!m) return null;
+  let h = parseInt(m[1], 10);
+  const min = parseInt(m[2], 10);
+  const mer = m[3].toUpperCase();
+  if (mer === 'PM' && h !== 12) h += 12;
+  if (mer === 'AM' && h === 12) h = 0;
+  const d = new Date(ref);
+  d.setHours(h, min, 0, 0);
+  return d;
+}
+function fmtRemain(ms) {
+  const totalMin = Math.max(0, Math.floor(ms / 60000));
+  const h = Math.floor(totalMin / 60);
+  const m = totalMin % 60;
+  const s = Math.floor((ms % 60000) / 1000);
+  if (h > 0) return `${h}h ${m}m`;
+  if (m > 0) return `${m}m ${s.toString().padStart(2,'0')}s`;
+  return `${s}s`;
+}
+function updateLivePanel() {
+  const now = new Date();
+  const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const todayName = dayNames[now.getDay()];
+  const led = document.getElementById('liveLed');
+  const label = document.getElementById('liveLabel');
+  const subject = document.getElementById('liveSubject');
+  const time = document.getElementById('liveTime');
+  const timeLbl = document.getElementById('liveTimeLbl');
+
+  const todaySched = scheduleData[todayName];
+  if (!todaySched) {
+    led.className = 'live-led';
+    label.textContent = "NO CLASSES TODAY";
+    subject.textContent = "Enjoy your " + todayName + "! 🎉";
+    time.textContent = "--:--";
+    timeLbl.textContent = "";
+    return;
+  }
+
+  const periods = todaySched.map(r => ({
+    ...r,
+    start: parseTimeToToday(r.time.split('–')[0], now),
+    end: parseTimeToToday(r.time.split('–')[1], now),
+  })).filter(p => p.start && p.end);
+
+  let current = periods.find(p => now >= p.start && now < p.end);
+  if (current) {
+    const remain = current.end - now;
+    led.className = 'live-led on';
+    label.textContent = current.type === 'break' ? "ON BREAK" : "HAPPENING NOW";
+    subject.textContent = current.subject;
+    time.textContent = fmtRemain(remain);
+    timeLbl.textContent = "remaining";
+    return;
+  }
+
+  let next = periods.find(p => now < p.start);
+  if (next) {
+    const until = next.start - now;
+    led.className = 'live-led soon';
+    label.textContent = "UP NEXT";
+    subject.textContent = next.subject;
+    time.textContent = fmtRemain(until);
+    timeLbl.textContent = "until start";
+    return;
+  }
+
+  led.className = 'live-led';
+  label.textContent = "CLASSES ENDED";
+  subject.textContent = "See you next school day! 👋";
+  time.textContent = "--:--";
+  timeLbl.textContent = "";
+}
+updateLivePanel();
+setInterval(updateLivePanel, 1000);
 
 document.getElementById('galleryGrid').innerHTML = gallery.map(g => {
   const photo = g.img
